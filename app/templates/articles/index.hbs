@@ -1,0 +1,31 @@
+<h2>Articles Index</h2>
+<table class="primary">
+<thead>
+<tr>
+<th>Description</th>
+<th>Borrowed since</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+{{#each itemController='articles/item'}}
+<tr>
+<td>{{model.description}}</td>
+<td>{{model.notes}}</td>
+<td>{{formatted-date model.createdAt 'LL'}}</td>
+<td>
+{{#if model.isSaving}}
+Saving ..
+{{else}}
+	{{view 'select' content=states selection=model.state}}
+
+{{/if}}
+
+</td>
+
+
+</tr>
+{{/each}}
+</tbody>
+</table>
