@@ -7,8 +7,13 @@ export default Ember.Controller.extend({
 	}
 	},
 	isDirtyChanged: function() {
+		//console.log('on selection changed');
+		if(this.get('model.isDirty')===true){
+
+		//console.log(this.get('model.isDirty'));
+		}
 		if (this.get('model.isDirty') && !this.get('model.isSaving')) {
 		Ember.run.once(this, this.autoSave);
 		}
-	}.on('init').observes('model.isDirty')
+	}.observes('model.state')
 });
